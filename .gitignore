@@ -1,0 +1,70 @@
+# =====================================================================
+# .gitignore – übernommen aus app/.gitignore (AIP) und für dieses Projekt erweitert
+# =====================================================================
+
+# --- Secrets – niemals committen --------------------------------------
+.env
+.env.*
+*.env
+!.env.example
+*.pem
+*.key
+*.jks
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+secrets/
+
+# --- Maven ------------------------------------------------------------
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.kotlin
+
+# --- IDEs -------------------------------------------------------------
+# IntelliJ IDEA (kompletter Ordner – persönliche Einstellungen)
+.idea/
+out/
+*.iws
+*.iml
+*.ipr
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+# VS Code
+.vscode/
+
+# --- Betriebssystem ---------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# --- Logs, Temp -------------------------------------------------------
+*.log
+logs/
+*.tmp
+*.bak
+*.swp
+*~
+
+# --- Client-spezifisch ------------------------------------------------
+src copy/
