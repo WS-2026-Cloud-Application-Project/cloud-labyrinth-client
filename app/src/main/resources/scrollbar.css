@@ -1,0 +1,36 @@
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Scrollbar Grundfläche */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+/* Track (Bereich hinter dem Thumb) */
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+/* Thumb = der Scrollbalken selbst */
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #333333;
+    -fx-background-radius: 10;
+}
+
+/* Buttons ausblenden */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}
