@@ -1,0 +1,44 @@
+# Qualitäts-Checks (Client, schlank) – Regeln siehe QUALITY.md im Server-Repo
+# Einrichtung: pip install pre-commit && pre-commit install --hook-type pre-commit --hook-type commit-msg
+# Versionen aktualisieren: pre-commit autoupdate
+
+default_install_hook_types: [pre-commit, commit-msg]
+
+repos:
+  # Allgemeine Hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=5000]
+      - id: detect-private-key
+      - id: no-commit-to-branch
+        args: [--branch, main, --branch, dev]
+
+  # Secrets
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks
+
+  # Shell-Skripte
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+
+  # Commit-Messages nach Conventional Commits (zusätzlich prüft die CI den PR-Titel)
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.4.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: [feat, fix, chore, docs, test, refactor, ci, perf]
