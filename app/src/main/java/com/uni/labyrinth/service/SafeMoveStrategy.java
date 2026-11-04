@@ -9,13 +9,13 @@ import java.util.*;
  * Sichere Zug-Strategie: Keine Simulation, nur garantiert gültige Züge
  */
 public class SafeMoveStrategy {
-    
+
     private final PathfindingService pathfinding;
-    
+
     public SafeMoveStrategy() {
         this.pathfinding = new PathfindingService();
     }
-    
+
     public static class SafeMoveOption {
         public Coordinates targetPosition;
         public int distanceToTarget;  // Distanz zu Schatz ODER Home
@@ -46,7 +46,7 @@ public class SafeMoveStrategy {
             this.isHome = isHome;
         }
     }
-    
+
     /**
      * Ermittelt das aktuelle Ziel: Schatz oder Heimatposition
      */
@@ -143,7 +143,7 @@ public class SafeMoveStrategy {
 
         return options;
     }
-    
+
     /**
      * Findet sicheren Push (vermeidet Push-Back)
      */
@@ -191,17 +191,17 @@ public class SafeMoveStrategy {
 
         return chosen;
     }
-    
+
     public static class PushInfo {
         public int index;
         public Direction direction;
-        
+
         public PushInfo(int index, Direction direction) {
             this.index = index;
             this.direction = direction;
         }
     }
-    
+
     private boolean isInvalidPush(int index, Direction direction, LastPush lastPush) {
         if (lastPush == null) {
             return false;
@@ -227,11 +227,11 @@ public class SafeMoveStrategy {
 
         return isOpposite;
     }
-    
+
     private Set<Coordinates> getOtherPlayerPositions(GameState gameState) {
         Set<Coordinates> occupied = new HashSet<>();
         String myPlayerId = gameState.getMyPlayerState().getPlayerInfo().getId();
-        
+
         for (PlayerState player : gameState.getPlayers()) {
             if (player.getPlayerInfo() != null &&
                 !player.getPlayerInfo().getId().equals(myPlayerId)) {
@@ -241,17 +241,17 @@ public class SafeMoveStrategy {
                 }
             }
         }
-        
+
         return occupied;
     }
-    
+
     private Coordinates findTreasurePosition(Tile[][] board, int treasureId) {
         if (treasureId < 0) return null;
-        
+
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[0].length; col++) {
                 Tile tile = board[row][col];
-                if (tile != null && tile.getTreasure() != null && 
+                if (tile != null && tile.getTreasure() != null &&
                     tile.getTreasure().getId() == treasureId) {
                     return new Coordinates(col, row);
                 }

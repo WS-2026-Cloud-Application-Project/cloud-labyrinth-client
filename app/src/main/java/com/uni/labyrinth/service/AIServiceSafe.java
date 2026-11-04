@@ -244,7 +244,7 @@ public class AIServiceSafe {
         }
         return false;
     }
-    
+
     private SafeMoveStrategy.SafeMoveOption chooseBestMove(
             List<SafeMoveStrategy.SafeMoveOption> options, GameState gameState) {
 
@@ -295,7 +295,7 @@ public class AIServiceSafe {
             return options.get(0); // Fallback: Nächste zum Ziel
         }
     }
-    
+
     private String getSystemPrompt(boolean isGoingHome) {
         String ziel = isGoingHome ? "HEIMATPOSITION" : "Schatz";
         String priorität = isGoingHome
@@ -318,7 +318,7 @@ public class AIServiceSafe {
             }
             """.formatted(ziel, priorität);
     }
-    
+
     private String buildPrompt(List<SafeMoveStrategy.SafeMoveOption> options, GameState gameState) {
         Coordinates myPos = gameState.getMyPlayerState().getCurrentPosition();
         Treasure treasure = gameState.getMyPlayerState().getCurrentTreasure();
@@ -355,17 +355,17 @@ public class AIServiceSafe {
         prompt.append("\nWelche Option?");
         return prompt.toString();
     }
-    
+
     private SafeMoveStrategy.SafeMoveOption parseChoice(String response, List<SafeMoveStrategy.SafeMoveOption> options) {
         try {
             int jsonStart = response.indexOf("{");
             int jsonEnd = response.lastIndexOf("}") + 1;
-            
+
             if (jsonStart != -1 && jsonEnd > jsonStart) {
                 String jsonStr = response.substring(jsonStart, jsonEnd);
                 JsonObject json = gson.fromJson(jsonStr, JsonObject.class);
                 int choice = json.get("chosenOption").getAsInt();
-                
+
                 if (choice >= 1 && choice <= options.size()) {
                     return options.get(choice - 1);
                 }
@@ -373,14 +373,14 @@ public class AIServiceSafe {
         } catch (Exception e) {
             // Ignoriere Parse-Fehler
         }
-        
+
         return options.get(0); // Fallback
     }
-    
+
     private AIDecision createFallbackDecision(GameState gameState) {
         Coordinates myPos = gameState.getMyPlayerState().getCurrentPosition();
         SafeMoveStrategy.PushInfo safePush = strategy.findSafePush(gameState);
-        
+
         AIDecision decision = new AIDecision();
         decision.setRotations(0);
         decision.setPushRowOrCol(safePush.index);

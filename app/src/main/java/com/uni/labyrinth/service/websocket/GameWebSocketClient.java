@@ -207,7 +207,7 @@ public class GameWebSocketClient {
         listener.onAchievementUnlocked(playerId, achievement);
         logGame.info("Player achievement unlocked: " + msg);
     }
-    
+
     private void handleGameOver(String msg) {
         GameOverPayload payload = gson.fromJson(msg, GameOverPayload.class);
         String winnerId = payload.getWinnerId();
@@ -260,4 +260,3 @@ public class GameWebSocketClient {
         error.printStackTrace();
     }
 }
-
