@@ -15,5 +15,3 @@ public class PlayerUpdateEventPayload {
         return player;
     }
 }
-
-

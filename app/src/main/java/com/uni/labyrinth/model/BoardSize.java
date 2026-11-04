@@ -75,4 +75,3 @@ public class BoardSize {
         return o.toString().replace("\n", "\n    ");
     }
 }
-

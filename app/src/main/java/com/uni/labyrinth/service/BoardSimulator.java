@@ -9,7 +9,7 @@ import java.util.*;
  * Simuliert Board-Änderungen GENAU wie der Server
  */
 public class BoardSimulator {
-    
+
     /**
      * Simuliert einen Push genau wie der Server (GameBoard.pushTile)
      */
@@ -17,15 +17,15 @@ public class BoardSimulator {
                                  int rowOrColIndex, Direction direction, int rotations) {
         int rows = originalBoard.length;
         int cols = originalBoard[0].length;
-        
+
         // Kopiere Board
         Tile[][] board = copyBoard(originalBoard);
-        
+
         // Rotiere Extra-Tile
         Tile rotatedExtra = rotateExtra(extraTile, rotations);
-        
+
         Tile tileToBePushedOut = null;
-        
+
         // Hole Tile das rausgeschoben wird
         switch (direction) {
             case UP:
@@ -37,7 +37,7 @@ public class BoardSimulator {
                 // Extra-Tile kommt unten rein
                 board[rows - 1][rowOrColIndex] = rotatedExtra;
                 break;
-                
+
             case DOWN:
                 tileToBePushedOut = board[rows - 1][rowOrColIndex];
                 // Schiebe alle Tiles nach unten
@@ -47,7 +47,7 @@ public class BoardSimulator {
                 // Extra-Tile kommt oben rein
                 board[0][rowOrColIndex] = rotatedExtra;
                 break;
-                
+
             case LEFT:
                 tileToBePushedOut = board[rowOrColIndex][0];
                 // Schiebe alle Tiles nach links
@@ -57,7 +57,7 @@ public class BoardSimulator {
                 // Extra-Tile kommt rechts rein
                 board[rowOrColIndex][cols - 1] = rotatedExtra;
                 break;
-                
+
             case RIGHT:
                 tileToBePushedOut = board[rowOrColIndex][cols - 1];
                 // Schiebe alle Tiles nach rechts
@@ -68,10 +68,10 @@ public class BoardSimulator {
                 board[rowOrColIndex][0] = rotatedExtra;
                 break;
         }
-        
+
         return board;
     }
-    
+
     /**
      * Rotiert ein Tile (rotiert die Entrances)
      */
@@ -79,9 +79,9 @@ public class BoardSimulator {
         if (tile == null || times == 0) {
             return tile;
         }
-        
+
         List<Direction> rotatedEntrances = new ArrayList<>(tile.getEntrances());
-        
+
         for (int i = 0; i < times; i++) {
             List<Direction> newEntrances = new ArrayList<>();
             for (Direction dir : rotatedEntrances) {
@@ -89,11 +89,11 @@ public class BoardSimulator {
             }
             rotatedEntrances = newEntrances;
         }
-        
+
         // Erstelle neues Tile mit rotierten Entrances
         return new Tile(rotatedEntrances, tile.isFixed(), tile.getTreasure(), tile.getBonus());
     }
-    
+
     /**
      * Rotiert eine Richtung um 90° im Uhrzeigersinn
      */
@@ -105,7 +105,7 @@ public class BoardSimulator {
             case LEFT -> Direction.UP;
         };
     }
-    
+
     /**
      * Kopiert ein Board
      */
@@ -113,13 +113,13 @@ public class BoardSimulator {
         int rows = original.length;
         int cols = original[0].length;
         Tile[][] copy = new Tile[rows][cols];
-        
+
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
                 copy[r][c] = original[r][c];
             }
         }
-        
+
         return copy;
     }
 }

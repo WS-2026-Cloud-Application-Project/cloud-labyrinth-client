@@ -3,12 +3,12 @@
 ![Build Status](https://github.com/AIP-Labyrinth-Group3/labyrinth-client/workflows/Client%20CI/badge.svg)
 ![Java](https://img.shields.io/badge/Java-17-blue)
 
-JavaFX Desktop-Client für **„Das verrückte Labyrinth“** (MCI AIP Projekt WS 2025/26).  
+JavaFX Desktop-Client für **„Das verrückte Labyrinth“** (MCI AIP Projekt WS 2025/26).
 Der Client verbindet sich per WebSocket mit dem Game-Server und zeigt den Spielzustand UI-seitig an (Server ist **Single Source of Truth**).
 
 ## Status
 
-**Client implementiert (Version 17 that's used in Quick Start 17.01.2026)**: Serverauswahl → Lobby → Spiel → Ergebnis, WebSocket-Client, optionaler KI-Modus.  
+**Client implementiert (Version 17 that's used in Quick Start 17.01.2026)**: Serverauswahl → Lobby → Spiel → Ergebnis, WebSocket-Client, optionaler KI-Modus.
 **Server-Discovery**: Fallback/Mock aktiv, wenn Discovery-API nicht erreichbar.
 
 ## Features
@@ -45,7 +45,7 @@ mvn -Djavafx.platform=win javafx:run     # Windows
 - `https://mgmt.dvl.spalx.dev/servers`
 
 Falls Discovery nicht funktioniert:
-- WebSocket-URL manuell eingeben: `ws://localhost:<PORT>/game`  
+- WebSocket-URL manuell eingeben: `ws://localhost:<PORT>/game`
   (`<PORT>` steht in den Server-Logs, typischerweise dynamisch 8397–8405, oder fix via `server.port`)
 
 ## AI Mode (optional)
@@ -82,7 +82,7 @@ mvn test
 
 ## Packaging
 
-Aktuell wird der Client primär über `mvn javafx:run` gestartet.  
+Aktuell wird der Client primär über `mvn javafx:run` gestartet.
 `mvn package` erzeugt zwar ein JAR, dieses ist jedoch ohne JavaFX-Runtime-Dependencies nicht direkt ausführbar (Native Packaging via jpackage/GraalVM ist nicht konfiguriert).
 
 ## Projektstruktur (Client)

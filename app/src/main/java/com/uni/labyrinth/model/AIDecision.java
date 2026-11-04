@@ -15,44 +15,44 @@ public class AIDecision {
     private Coordinates beamTarget;       // Ziel für BEAM
     private String swapTargetPlayerId;    // Ziel-Spieler für SWAP
     private boolean isGoingHome;          // True wenn AI zum Startfeld navigiert
-    
+
     // Getters und Setters
-    public int getRotations() { 
-        return rotations; 
+    public int getRotations() {
+        return rotations;
     }
-    
-    public void setRotations(int rotations) { 
-        this.rotations = rotations; 
+
+    public void setRotations(int rotations) {
+        this.rotations = rotations;
     }
-    
-    public int getPushRowOrCol() { 
-        return pushRowOrCol; 
+
+    public int getPushRowOrCol() {
+        return pushRowOrCol;
     }
-    
-    public void setPushRowOrCol(int pushRowOrCol) { 
-        this.pushRowOrCol = pushRowOrCol; 
+
+    public void setPushRowOrCol(int pushRowOrCol) {
+        this.pushRowOrCol = pushRowOrCol;
     }
-    
-    public Direction getPushDirection() { 
-        return pushDirection; 
+
+    public Direction getPushDirection() {
+        return pushDirection;
     }
-    
-    public void setPushDirection(Direction direction) { 
-        this.pushDirection = direction; 
+
+    public void setPushDirection(Direction direction) {
+        this.pushDirection = direction;
     }
-    
-    public Coordinates getMoveTarget() { 
-        return moveTarget; 
+
+    public Coordinates getMoveTarget() {
+        return moveTarget;
     }
-    
-    public void setMoveTarget(Coordinates target) { 
-        this.moveTarget = target; 
+
+    public void setMoveTarget(Coordinates target) {
+        this.moveTarget = target;
     }
-    
-    public String getReasoning() { 
-        return reasoning; 
+
+    public String getReasoning() {
+        return reasoning;
     }
-    
+
     public void setReasoning(String reasoning) {
         this.reasoning = reasoning;
     }
